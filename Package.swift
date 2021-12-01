@@ -22,6 +22,10 @@ func generateTargets() -> [Target] {
             dependencies: [
                 .product(name: "Algorithms", package: "swift-algorithms"),
             ]),
+        .target(
+            name: "TestingSupport",
+            dependencies: []
+        ),
     ]
 
     for year in years {
@@ -34,7 +38,8 @@ func generateTargets() -> [Target] {
             .testTarget(
                 name: "\(year)Tests",
                 dependencies: [
-                    .target(name: "AOC\(year)")
+                    .target(name: "AOC\(year)"),
+                    "TestingSupport",
                 ],
                 resources: [
                     .copy("Fixtures"),
