@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol Day: AnyObject {
+public protocol Day: AnyObject {
     init()
 
     func part1(_ input: String) -> CustomStringConvertible
