@@ -5,6 +5,7 @@
 
 import Foundation
 import Algorithms
+import AOCCore
 
 func run(dayNumber: Int, inputPath: String) {
     guard let dayClass = Bundle.main.classNamed("AdventOfCode.Day\(dayNumber)") as? Day.Type

@@ -1,11 +1,12 @@
 //
-//  Day3.swift
+//  Day16.swift
 //  AdventOfCode
 //
 
 import Foundation
+import AOCCore
 
-final class Day3: Day {
+final class Day16: Day {
     func part1(_ input: String) -> CustomStringConvertible {
         return 0
     }

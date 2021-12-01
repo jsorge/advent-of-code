@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import AOCCore
 
 final class Day21: Day {
     func part1(_ input: String) -> CustomStringConvertible {

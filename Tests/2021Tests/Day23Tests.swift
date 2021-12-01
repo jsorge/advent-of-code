@@ -4,6 +4,7 @@
 //
 
 import XCTest
+@testable import AOC2021
 
 class Day23Tests: XCTestCase {
     let day = Day23()

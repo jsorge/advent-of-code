@@ -9,6 +9,7 @@ do
 //
 
 import Foundation
+import AOCCore
 
 final class Day${DAY}: Day {
     func part1(_ input: String) -> CustomStringConvertible {

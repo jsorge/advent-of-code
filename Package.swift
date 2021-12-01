@@ -8,10 +8,15 @@ func generateTargets() -> [Target] {
         2021
     ]
 
+    let executable: Target = .executableTarget(
+        name: "advent-of-code",
+        dependencies: [
+            .product(name: "ArgumentParser", package: "swift-argument-parser"),
+        ]
+    )
+
     var allTargets: [Target] = [
-        .executableTarget(
-            name: "advent-of-code",
-            dependencies: []),
+        executable,
         .target(
             name: "AOCCore",
             dependencies: [
@@ -20,14 +25,19 @@ func generateTargets() -> [Target] {
     ]
 
     for year in years {
+        executable.dependencies.append(.target(name: "AOC\(year)"))
+
         allTargets.append(contentsOf: [
             .target(
-                name: "\(year)",
+                name: "AOC\(year)",
                 dependencies: ["AOCCore"]),
             .testTarget(
                 name: "\(year)Tests",
                 dependencies: [
-                    .targetItem(name: "\(year)", condition: nil)
+                    .target(name: "AOC\(year)")
+                ],
+                resources: [
+                    .copy("Fixtures"),
                 ]),
         ])
     }
@@ -39,7 +49,7 @@ let package = Package(
     name: "advent-of-code",
     dependencies: [
          .package(url: "https://github.com/apple/swift-algorithms.git", from: "1.0.0"),
-         
+         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0"),
     ],
     targets: generateTargets()
 )
