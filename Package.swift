@@ -34,16 +34,20 @@ func generateTargets() -> [Target] {
         allTargets.append(contentsOf: [
             .target(
                 name: "AOC\(year)",
-                dependencies: ["AOCCore"]),
+                dependencies: ["AOCCore"],
+                path: "Years/\(year)/Sources"
+            ),
             .testTarget(
                 name: "\(year)Tests",
                 dependencies: [
                     .target(name: "AOC\(year)"),
                     "TestingSupport",
                 ],
+                path: "Years/\(year)/Tests",
                 resources: [
                     .copy("Fixtures"),
-                ]),
+                ]
+            ),
         ])
     }
 
