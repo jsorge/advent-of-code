@@ -12,8 +12,8 @@ final class Day2: Day {
 
         let ouptut = lines
             .map({ $0.split(separator: " ") })
-            .reduce(into: (horizontal: 0, vertical: 0)) { partialResult, raw in
-                let instruction = Instruction(rawValue: raw)
+            .map({ Instruction(rawValue: $0) })
+            .reduce(into: (horizontal: 0, vertical: 0)) { partialResult, instruction in
                 switch instruction.direction {
                 case .forward:
                     partialResult.horizontal += instruction.change
@@ -32,8 +32,8 @@ final class Day2: Day {
 
         let ouptut = lines
             .map({ $0.split(separator: " ") })
-            .reduce(into: (horizontal: 0, vertical: 0, aim: 0)) { partialResult, raw in
-                let instruction = Instruction(rawValue: raw)
+            .map({ Instruction(rawValue: $0) })
+            .reduce(into: (horizontal: 0, vertical: 0, aim: 0)) { partialResult, instruction in
                 switch instruction.direction {
                 case .forward:
                     partialResult.horizontal += instruction.change
