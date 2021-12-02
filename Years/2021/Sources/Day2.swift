@@ -6,18 +6,6 @@
 import Foundation
 import AOCCore
 
-private struct Instruction {
-    enum Direction: String { case forward, up, down }
-
-    let direction: Direction
-    let change: Int
-
-    init(rawValue: [String.SubSequence]) {
-        self.change = Int(rawValue[1])!
-        self.direction = Direction(rawValue: String(rawValue[0]))!
-    }
-}
-
 final class Day2: Day {
     func part1(_ input: String) -> CustomStringConvertible {
         let lines = input.toLines()
@@ -58,5 +46,17 @@ final class Day2: Day {
             }
 
         return ouptut.vertical * ouptut.horizontal
+    }
+}
+
+private struct Instruction {
+    enum Direction: String { case forward, up, down }
+
+    let direction: Direction
+    let change: Int
+
+    init(rawValue: [String.SubSequence]) {
+        self.change = Int(rawValue[1])!
+        self.direction = Direction(rawValue: String(rawValue[0]))!
     }
 }
