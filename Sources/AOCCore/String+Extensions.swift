@@ -1,8 +1,8 @@
 import Foundation
 
 public extension String {
-    func toIntArray() -> [Int] {
-        return self.toLines().compactMap({ Int($0) })
+    func toIntArray(radix: Int = 10) -> [Int] {
+        return self.toLines().compactMap({ Int($0, radix: radix) })
     }
 
     func toLines() -> [String] {
