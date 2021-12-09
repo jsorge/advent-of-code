@@ -21,6 +21,7 @@ func generateTargets() -> [Target] {
             name: "AOCCore",
             dependencies: [
                 .product(name: "Algorithms", package: "swift-algorithms"),
+                .product(name: "Collections", package: "swift-collections"),
             ]),
         .target(
             name: "TestingSupport",
@@ -59,6 +60,7 @@ let package = Package(
     dependencies: [
          .package(url: "https://github.com/apple/swift-algorithms.git", from: "1.0.0"),
          .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0"),
+         .package(url: "https://github.com/apple/swift-collections.git", .upToNextMajor(from: "1.0.1")),
     ],
     targets: generateTargets()
 )
