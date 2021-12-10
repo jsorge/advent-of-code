@@ -5,16 +5,27 @@
 
 import XCTest
 @testable import AOC2021
+import TestingSupport
+
+private let sampleInput = """
+"""
 
 class Day11Tests: XCTestCase {
     let day = Day11()
 
     func testPart1() throws {
-        debugPrint(day.part1(""))
+        XCTAssertEqual(0, day.part1(sampleInput) as? Int)
+
+        let inputFromFile = try Loader.loadDay("11", from: .module)
+        let result = day.part1(inputFromFile)
+        printResult(result)
     }
 
     func testPart2() throws {
-        debugPrint(day.part2(""))
-    }
+        XCTAssertEqual(0, day.part2(sampleInput) as? Int)
 
+        let inputFromFile = try Loader.loadDay("11", from: .module)
+        let result = day.part2(inputFromFile)
+        printResult(result)
+    }
 }
