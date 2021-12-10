@@ -23,6 +23,11 @@ func generateTargets() -> [Target] {
                 .product(name: "Algorithms", package: "swift-algorithms"),
                 .product(name: "Collections", package: "swift-collections"),
             ]),
+        .testTarget(
+            name: "AOCCoreTests",
+            dependencies: [
+                "AOCCore"
+            ]),
         .target(
             name: "TestingSupport",
             dependencies: []
