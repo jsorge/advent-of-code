@@ -7,7 +7,7 @@ public enum LoaderError: Error {
 
 public enum Loader {
     public static func loadDay(_ day: String, from bundle: Bundle) throws -> String {
-        guard let url = bundle.url(forResource: "Day\(day)", withExtension: nil, subdirectory: "Fixtures") else {
+        guard let url = bundle.url(forResource: "Day\(day)", withExtension: "input") else {
             throw LoaderError.fileDoesNotExist
         }
 

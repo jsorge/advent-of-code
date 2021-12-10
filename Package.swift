@@ -36,12 +36,19 @@ func generateTargets() -> [Target] {
 
     for year in years {
         executable.dependencies.append(.target(name: "AOC\(year)"))
+        let dayRange = 1...25
+        let sourcePaths = dayRange.map({ "Day\($0)/Day\($0).swift" })
+        let testPaths = dayRange.map({ "Day\($0)/Day\($0)Tests.swift" })
+        let resourcePaths = dayRange.map({ "Day\($0)/Day\($0).input" })
+        let inputPaths: [Resource] = resourcePaths.map({ .process($0) })
 
         allTargets.append(contentsOf: [
             .target(
                 name: "AOC\(year)",
                 dependencies: ["AOCCore"],
-                path: "Years/\(year)/Sources"
+                path: "Years/\(year)",
+                exclude: testPaths + resourcePaths,
+                sources: sourcePaths
             ),
             .testTarget(
                 name: "\(year)Tests",
@@ -49,10 +56,10 @@ func generateTargets() -> [Target] {
                     .target(name: "AOC\(year)"),
                     "TestingSupport",
                 ],
-                path: "Years/\(year)/Tests",
-                resources: [
-                    .copy("Fixtures"),
-                ]
+                path: "Years/\(year)",
+                exclude: sourcePaths,
+                sources: testPaths,
+                resources: inputPaths
             ),
         ])
     }
