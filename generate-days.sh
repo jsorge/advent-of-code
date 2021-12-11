@@ -18,6 +18,8 @@ mkdir "Years/${YEAR}/Day${DAY}"
 import Foundation
 import AOCCore
 
+// https://adventofcode.com/${YEAR}/day/${DAY}
+
 final class Day${DAY}: Day {
     func part1(_ input: String) -> CustomStringConvertible {
         return 0
