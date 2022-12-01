@@ -35,13 +35,14 @@ private final class CaveMap {
     }
 
     var numberOfRoutes: Int {
-        var count = 0
-
-        for cave in start.connections {
-            
-        }
-
-        return count
+        0
+//        var count = 0
+//
+//        for cave in start.connections {
+//
+//        }
+//
+//        return count
     }
 
     func processConnections(from string: String) {

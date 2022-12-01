@@ -31,8 +31,8 @@ final class Day8: Day {
     }
 
     func part2(_ input: String) -> CustomStringConvertible {
-        let lines = input.toLines()
-            .map({ $0.split(separator: "|")[1] })
+//        let lines = input.toLines()
+//            .map({ $0.split(separator: "|")[1] })
 
 
 
