@@ -28,3 +28,4 @@ DerivedData/
 .DS_Store
 
 inputs
+/.build

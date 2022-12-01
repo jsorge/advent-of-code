@@ -20,7 +20,7 @@ extension NSRegularExpression {
         enumerateMatches(in: string, options: [], range: range) { result, flags, stop in
             guard let numberOfRanges = result?.numberOfRanges else { return }
             for rangeIndex in 0..<numberOfRanges {
-                guard let matchRange = result?.range(at: rangeIndex) else { continue }
+                guard let matchRange = result?.range(at: rangeIndex), matchRange.location != NSNotFound else { continue }
                 let substring = (string as NSString).substring(with: matchRange)
                 groups.append(substring)
             }
