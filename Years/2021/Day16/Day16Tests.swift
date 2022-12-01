@@ -8,6 +8,7 @@ import XCTest
 import TestingSupport
 
 private let sampleInput = """
+110100101111111000101000VVVTTTAAAAABBBBBCCCCC
 """
 
 class Day16Tests: XCTestCase {
