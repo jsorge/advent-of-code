@@ -5,7 +5,8 @@ import PackageDescription
 
 func generateTargets() -> [Target] {
     let years = [
-        2021
+        2021,
+        2022,
     ]
 
     let executable: Target = .executableTarget(
