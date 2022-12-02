@@ -10,12 +10,7 @@ public extension String {
     }
 
     func toLines() -> [String] {
-        let token = "**{emptyline}**"
-        let output = self
-            .replacingOccurrences(of: "\n\n", with: "\n\(token)\n")
-            .split(separator: "\n").map({ String($0) })
-            .map { $0.replacingOccurrences(of: token, with: "") }
-
-        return output
+        split(separator: "\n", omittingEmptySubsequences: false)
+            .map { String($0) }
     }
 }
