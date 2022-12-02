@@ -23,6 +23,7 @@ final class Day2: Day {
     func part1(_ input: String) -> CustomStringConvertible {
         let total = input
             .toLines()
+            .filter { $0.isEmpty == false }
             .map {
                 let letters = $0.components(separatedBy: " ")
                 let opponent = Item(letter: letters[0])
@@ -45,6 +46,7 @@ final class Day2: Day {
     func part2(_ input: String) -> CustomStringConvertible {
         let total = input
             .toLines()
+            .filter { $0.isEmpty == false }
             .map {
                 let letters = $0.components(separatedBy: " ")
                 let opponent = Item(letter: letters[0])
