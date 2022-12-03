@@ -8,13 +8,19 @@ import XCTest
 import TestingSupport
 
 private let sampleInput = """
+vJrwpWtwJgWrhcsFMMfFFhFp
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+PmmdzqPrVvPwwTWBwg
+wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+ttgJtRGJQctTZtZT
+CrZsJsPPZsGzwwsLwLmpwMDw
 """
 
 class Day3Tests: XCTestCase {
     let day = Day3()
 
     func testPart1() throws {
-        XCTAssertEqual(0, day.part1(sampleInput) as? Int)
+        XCTAssertEqual(157, day.part1(sampleInput) as? Int)
 
         let inputFromFile = try Loader.loadDay("3", from: .module)
         let result = day.part1(inputFromFile)
@@ -22,7 +28,7 @@ class Day3Tests: XCTestCase {
     }
 
     func testPart2() throws {
-        XCTAssertEqual(0, day.part2(sampleInput) as? Int)
+        XCTAssertEqual(70, day.part2(sampleInput) as? Int)
 
         let inputFromFile = try Loader.loadDay("3", from: .module)
         let result = day.part2(inputFromFile)
