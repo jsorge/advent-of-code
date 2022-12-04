@@ -9,8 +9,8 @@ public extension String {
         return self.toLines()[0].split(separator: separator).compactMap({ Int(substring: $0) })
     }
 
-    func toLines() -> [String] {
-        split(separator: "\n", omittingEmptySubsequences: false)
+    func toLines(omittingEmpties: Bool = false) -> [String] {
+        split(separator: "\n", omittingEmptySubsequences: omittingEmpties)
             .map { String($0) }
     }
 }

@@ -10,11 +10,10 @@ import AOCCore
 
 final class Day4: Day {
     func part1(_ input: String) -> CustomStringConvertible {
-        let pairs = input.toLines()
+        let pairs = input.toLines(omittingEmpties: true)
 
         var contained = 0
         for assignments in pairs {
-            guard assignments.isEmpty == false else { continue }
             let (range1, range2) = parseLineToPairs(assignments)
             if range1.contains(range2) || range2.contains(range1) {
                 contained += 1
@@ -25,11 +24,10 @@ final class Day4: Day {
     }
 
     func part2(_ input: String) -> CustomStringConvertible {
-        let pairs = input.toLines()
+        let pairs = input.toLines(omittingEmpties: true)
 
         var intersections = 0
         for assignments in pairs {
-            guard assignments.isEmpty == false else { continue }
             let (range1, range2) = parseLineToPairs(assignments)
 
             if range1.overlaps(range2) {
