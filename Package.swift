@@ -49,7 +49,10 @@ func generateTargets() -> [Target] {
                 dependencies: ["AOCCore"],
                 path: "Years/\(year)",
                 exclude: testPaths + resourcePaths,
-                sources: sourcePaths
+                sources: sourcePaths,
+                swiftSettings: [
+                    .unsafeFlags(["-enable-bare-slash-regex"]),
+                ]
             ),
             .testTarget(
                 name: "\(year)Tests",

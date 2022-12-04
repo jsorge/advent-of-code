@@ -39,7 +39,7 @@ final class Day4: Day {
     }
 
     private func parseLineToPairs(_ line: String) -> (ClosedRange<Int>, ClosedRange<Int>) {
-        let regex = #/(\d+)-(\d+),(\d+)-(\d+)/#
+        let regex = /(\d+)-(\d+),(\d+)-(\d+)/
         let matches = try! regex.firstMatch(in: line)!
         let range1 = Int(matches.1)!...Int(matches.2)!
         let range2 = Int(matches.3)!...Int(matches.4)!
