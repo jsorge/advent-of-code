@@ -8,13 +8,22 @@ import XCTest
 import TestingSupport
 
 private let sampleInput = """
+    [D]
+[N] [C]
+[Z] [M] [P]
+ 1   2   3
+
+move 1 from 2 to 1
+move 3 from 1 to 3
+move 2 from 2 to 1
+move 1 from 1 to 2
 """
 
 class Day5Tests: XCTestCase {
     let day = Day5()
 
     func testPart1() throws {
-        XCTAssertEqual(0, day.part1(sampleInput) as? Int)
+        XCTAssertEqual("CMZ", day.part1(sampleInput) as! String)
 
         let inputFromFile = try Loader.loadDay("5", from: .module)
         let result = day.part1(inputFromFile)
@@ -22,7 +31,7 @@ class Day5Tests: XCTestCase {
     }
 
     func testPart2() throws {
-        XCTAssertEqual(0, day.part2(sampleInput) as? Int)
+        XCTAssertEqual("MCD", day.part2(sampleInput) as! String)
 
         let inputFromFile = try Loader.loadDay("5", from: .module)
         let result = day.part2(inputFromFile)
