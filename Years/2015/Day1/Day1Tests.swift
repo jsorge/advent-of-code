@@ -8,13 +8,14 @@ import XCTest
 import TestingSupport
 
 private let sampleInput = """
+)())())((()))(((((((()()()()()()
 """
 
 class Day1Tests: XCTestCase {
     let day = Day1()
 
     func testPart1() throws {
-        XCTAssertEqual(0, day.part1(sampleInput) as? Int)
+        XCTAssertEqual(4, day.part1(sampleInput) as? Int)
 
         let inputFromFile = try Loader.loadDay("1", from: .module)
         let result = day.part1(inputFromFile)
@@ -22,8 +23,6 @@ class Day1Tests: XCTestCase {
     }
 
     func testPart2() throws {
-        XCTAssertEqual(0, day.part2(sampleInput) as? Int)
-
         let inputFromFile = try Loader.loadDay("1", from: .module)
         let result = day.part2(inputFromFile)
         printResult(result)
