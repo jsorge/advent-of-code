@@ -5,6 +5,7 @@ import PackageDescription
 
 func generateTargets() -> [Target] {
     let years = [
+        2015,
         2021,
         2022,
     ]
