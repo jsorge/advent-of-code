@@ -9,6 +9,8 @@ import AOCCore
 // https://adventofcode.com/2022/day/7
 
 final class Day7: Day {
+    fileprivate typealias FSNode = Node<Item>
+
     func part1(_ input: String) -> CustomStringConvertible {
         let (_, directories) = parseToRoot(input)
         return directories
@@ -34,12 +36,12 @@ final class Day7: Day {
         return dirToDelete.totalSize
     }
 
-    private func parseToRoot(_ input: String) -> (root: Node, directories: [Node]) {
-        let root = Node(label: "/")
+    private func parseToRoot(_ input: String) -> (root: FSNode, directories: [FSNode]) {
+        let root = FSNode(value: .dir("/"))
 
         var currentNode = root
         var listing = false
-        var directories = [Node]()
+        var directories = [FSNode]()
         for instruction in input.toLines().dropFirst() {
             guard instruction != "" else { continue }
 
@@ -51,18 +53,18 @@ final class Day7: Day {
                 let regex = /^(\d+|\w+) ([\w\.]+)$/
                 let match = try! regex.firstMatch(in: instruction)!
                 let name = String(match.output.2)
-                let child = Node(label: name)
 
+                let child: FSNode
                 if match.output.1 == "dir" {
+                    child = FSNode(value: .dir(name))
                     directories.append(child)
                 }
                 else {
                     let size = Int(match.output.1)!
-                    child.size = size
+                    child = FSNode(value: .file(name, size))
                 }
 
-                currentNode.children.append(child)
-                child.parent = currentNode
+                currentNode.addChild(child)
 
                 continue
             }
@@ -72,7 +74,7 @@ final class Day7: Day {
             else if instruction.starts(with: "$ cd") {
                 let regex = /\$ cd (\w+)/
                 let dirname = try! regex.firstMatch(in: instruction)!.output.1
-                let node = currentNode.children.first(where: { $0.label == dirname })!
+                let node = currentNode.children.findDirectory(named: dirname)!
                 currentNode = node
             }
 
@@ -81,26 +83,33 @@ final class Day7: Day {
 
         return (root, directories)
     }
+
+    fileprivate enum Item {
+        case file(String, Int)
+        case dir(String)
+    }
 }
 
-private final class Node {
-    var label: String
-    var size: Int?
-
-    weak var parent: Node?
-    var children = [Node]()
-
-    init(label: String) {
-        self.label = label
-    }
-
+private extension Node where T == Day7.Item {
     var totalSize: Int {
-        guard children.isEmpty == false else {
-            return size!
+        switch value {
+        case .file(_, let size):
+            return size
+        case .dir:
+            return children.map(\.totalSize).reduce(0, +)
         }
+    }
+}
 
-        return children
-            .map(\.totalSize)
-            .reduce(0, +)
+private extension Array where Element == Day7.FSNode {
+    func findDirectory(named dirname: any StringProtocol) -> Element? {
+        return first(where: {
+            switch $0.value {
+            case .dir(let name):
+                return name == dirname
+            default:
+                return false
+            }
+        })
     }
 }
