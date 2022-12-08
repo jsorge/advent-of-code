@@ -24,6 +24,7 @@ func generateTargets() -> [Target] {
             dependencies: [
                 .product(name: "Algorithms", package: "swift-algorithms"),
                 .product(name: "Collections", package: "swift-collections"),
+                .product(name: "SwiftHash", package: "SwiftHash"),
             ]),
         .testTarget(
             name: "AOCCoreTests",
@@ -79,6 +80,7 @@ let package = Package(
          .package(url: "https://github.com/apple/swift-algorithms.git", from: "1.0.0"),
          .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0"),
          .package(url: "https://github.com/apple/swift-collections.git", .upToNextMajor(from: "1.0.1")),
+         .package(url: "https://github.com/onmyway133/SwiftHash", from: "2.0.2"),
     ],
     targets: generateTargets()
 )
