@@ -8,13 +8,18 @@ import XCTest
 import TestingSupport
 
 private let sampleInput = """
+30373
+25512
+65332
+33549
+35390
 """
 
 class Day8Tests: XCTestCase {
     let day = Day8()
 
     func testPart1() throws {
-        XCTAssertEqual(0, day.part1(sampleInput) as? Int)
+        XCTAssertEqual(21, day.part1(sampleInput) as? Int)
 
         let inputFromFile = try Loader.loadDay("8", from: .module)
         let result = day.part1(inputFromFile)
@@ -22,7 +27,7 @@ class Day8Tests: XCTestCase {
     }
 
     func testPart2() throws {
-        XCTAssertEqual(0, day.part2(sampleInput) as? Int)
+        XCTAssertEqual(8, day.part2(sampleInput) as? Int)
 
         let inputFromFile = try Loader.loadDay("8", from: .module)
         let result = day.part2(inputFromFile)

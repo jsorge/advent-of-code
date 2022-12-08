@@ -13,4 +13,10 @@ public extension String {
         split(separator: "\n", omittingEmptySubsequences: omittingEmpties)
             .map { String($0) }
     }
+
+    func toIntGrid() -> Grid<Int> {
+        let lines = toLines(omittingEmpties: true)
+            .compactMap({ $0.compactMap({ Int(character: $0) }) })
+        return Grid(lines)
+    }
 }
