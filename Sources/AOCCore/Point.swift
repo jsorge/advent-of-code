@@ -56,6 +56,36 @@ public extension Point {
 
         return bearingDegrees.rounded(.down)
     }
+
+    func isDiagonalTo(_ other: Point) -> Bool {
+        let (xDiff, yDiff) = absoluteDistanceTo(other)
+        return xDiff == 1 && yDiff == 1
+    }
+
+    func isTouching(_ other: Point) -> Bool {
+        if self == other { return true }
+        let (xDiff, yDiff) = absoluteDistanceTo(other)
+        return xDiff <= 1 && yDiff <= 1
+    }
+
+    func distanceTo(_ other: Point) -> (x: Int, y: Int) {
+        let xDiff = x - other.x
+        let yDiff = y - other.y
+        return (xDiff, yDiff)
+    }
+
+    func absoluteDistanceTo(_ other: Point) -> (x: Int, y: Int) {
+        let (x, y) = distanceTo(other)
+        return (abs(x), abs(y))
+    }
+
+    func inSameColumn(as other: Point) -> Bool {
+        x == other.x
+    }
+
+    func inSameRow(as other: Point) -> Bool {
+        y == other.y
+    }
 }
 
 private extension CGFloat {
